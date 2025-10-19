@@ -17,7 +17,7 @@ st.set_page_config(
 )
 
 # Title
-st.title("🎮 My Gaming AI Assistant")
+st.title("🎮 My Gaming AI Assistant1")
 st.markdown("### Welcome to Your Personal Gaming Companion! 👾")
 st.info("🎯 I'm here to help you with game recommendations, strategies, guides, tips & tricks, and answer all your gaming questions. Whether you're a casual player or hardcore gamer, let's level up together!")
 
