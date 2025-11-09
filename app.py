@@ -1,13 +1,13 @@
 import streamlit as st
 import os
-from groq import Groq
+import google.generativeai as genai
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
-# Initialize Groq client
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+# Initialize Google Gemini client
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Set page configuration
 st.set_page_config(
@@ -99,6 +99,12 @@ with st.sidebar:
 
     st.divider()
 
+    # About section
+    st.subheader("ℹ️ About")
+    st.caption("Powered by Google Gemini 1.5 Flash - A fast and efficient AI model for conversational experiences.")
+
+    st.divider()
+
     # Quick question templates
     st.subheader("💡 Quick Questions")
     quick_questions = [
@@ -135,19 +141,31 @@ if prompt := st.chat_input("Ask me anything about gaming..."):
         full_response = ""
 
         try:
-            # Call Groq API
-            stream = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
-                messages=st.session_state.messages,
-                temperature=0.7,
-                max_tokens=2048,
-                stream=True
-            )
+            # Initialize Gemini model
+            model = genai.GenerativeModel('gemini-1.5-flash')
+
+            # Convert messages to Gemini format (exclude system message for chat history)
+            gemini_messages = []
+            system_prompt = st.session_state.messages[0]["content"]
+
+            for msg in st.session_state.messages[1:]:
+                if msg["role"] == "user":
+                    gemini_messages.append({"role": "user", "parts": [msg["content"]]})
+                elif msg["role"] == "assistant":
+                    gemini_messages.append({"role": "model", "parts": [msg["content"]]})
+
+            # Start chat with history
+            chat = model.start_chat(history=gemini_messages[:-1])  # Exclude the latest user message
+
+            # Send the latest message with system prompt prepended
+            user_message = f"{system_prompt}\n\n{gemini_messages[-1]['parts'][0]}"
 
             # Stream the response
-            for chunk in stream:
-                if chunk.choices[0].delta.content is not None:
-                    full_response += chunk.choices[0].delta.content
+            response = chat.send_message(user_message, stream=True)
+
+            for chunk in response:
+                if chunk.text:
+                    full_response += chunk.text
                     message_placeholder.markdown(full_response + "▌")
 
             # Display complete response
