@@ -101,7 +101,7 @@ with st.sidebar:
 
     # About section
     st.subheader("ℹ️ About")
-    st.caption("Powered by Google Gemini 1.5 Flash - A fast and efficient AI model for conversational experiences.")
+    st.caption("Powered by Google Gemini 2.5 Flash - The latest fast and efficient AI model for conversational experiences.")
 
     st.divider()
 
@@ -142,7 +142,7 @@ if prompt := st.chat_input("Ask me anything about gaming..."):
 
         try:
             # Initialize Gemini model
-            model = genai.GenerativeModel('gemini-1.5-flash-latest')
+            model = genai.GenerativeModel('gemini-2.5-flash')
 
             # Convert messages to Gemini format (exclude system message for chat history)
             gemini_messages = []
