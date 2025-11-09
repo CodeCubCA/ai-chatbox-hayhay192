@@ -142,7 +142,7 @@ if prompt := st.chat_input("Ask me anything about gaming..."):
 
         try:
             # Initialize Gemini model
-            model = genai.GenerativeModel('gemini-1.5-flash')
+            model = genai.GenerativeModel('gemini-1.5-flash-latest')
 
             # Convert messages to Gemini format (exclude system message for chat history)
             gemini_messages = []
