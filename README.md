@@ -1,6 +1,6 @@
 # AI Chatbox - Gaming Assistant
 
-An intelligent AI-powered chatbot built with Streamlit and Groq API. This interactive assistant helps gamers with recommendations, strategies, tips, and answers to all gaming-related questions.
+An intelligent AI-powered chatbot built with Streamlit and Google Gemini API. This interactive assistant helps gamers with recommendations, strategies, tips, and answers to all gaming-related questions.
 
 ## Live Demo
 
@@ -8,18 +8,19 @@ Try the live app: [AI Gaming Assistant](https://ai-chatbox-haydrian-codecub.stre
 
 ## Features
 
-- **Real-time AI Conversation** - Powered by Groq's advanced language models
+- **Real-time AI Conversation** - Powered by Google Gemini 2.5 Flash, the latest fast and efficient AI model
+- **Streaming Responses** - Real-time text generation with smooth streaming display
 - **Multiple Personalities** - Choose between Friendly, Professional, or Humorous chat styles
 - **Gaming Focus** - Specialized in game recommendations, strategies, and gaming advice
 - **Context-Aware Responses** - Maintains conversation history for coherent interactions
-- **Beautiful UI** - Clean Streamlit interface with custom styling
+- **Beautiful UI** - Clean Streamlit interface with custom styling and dynamic updates
 - **Cloud Deployed** - Hosted on Streamlit Cloud for easy access
 
 ## Technologies Used
 
 - **Python** - Backend programming language
 - **Streamlit** - Web application framework
-- **Groq API** - AI language model integration
+- **Google Gemini 2.5 Flash API** - AI language model integration
 - **python-dotenv** - Environment variable management
 - **Git** - Version control
 
@@ -28,7 +29,7 @@ Try the live app: [AI Gaming Assistant](https://ai-chatbox-haydrian-codecub.stre
 ### Prerequisites
 
 - Python 3.8 or higher
-- A Groq API key (get one at [console.groq.com](https://console.groq.com))
+- A Google Gemini API key (get one at [aistudio.google.com](https://aistudio.google.com/app/apikey))
 
 ### Setup Steps
 
@@ -48,8 +49,8 @@ pip install -r requirements.txt
 # Copy the example environment file
 cp .env.example .env
 
-# Edit .env and add your Groq API key
-# GROQ_API_KEY=your_api_key_here
+# Edit .env and add your Google Gemini API key
+# GEMINI_API_KEY=your_api_key_here
 ```
 
 4. Run the application
@@ -73,7 +74,7 @@ The AI assistant offers three distinct personality modes:
 
 Required environment variables (see `.env.example`):
 
-- `GROQ_API_KEY` - Your Groq API key for AI model access
+- `GEMINI_API_KEY` - Your Google Gemini API key for AI model access
 
 ## Usage
 
@@ -98,7 +99,8 @@ ai-chatbox-hayhay192/
 ## Features in Detail
 
 ### AI-Powered Conversations
-- Uses Groq's Llama 3.3 70B Versatile model
+- Uses Google's Gemini 2.5 Flash model - the latest fast and efficient AI
+- Streaming responses with real-time text generation
 - Maintains conversation context for natural interactions
 - Provides knowledgeable responses about gaming topics
 
@@ -116,7 +118,7 @@ This project is deployed on Streamlit Cloud. To deploy your own version:
 1. Fork this repository
 2. Sign up at [streamlit.io](https://streamlit.io)
 3. Connect your GitHub repository
-4. Add your `GROQ_API_KEY` to Streamlit Cloud secrets
+4. Add your `GEMINI_API_KEY` to Streamlit Cloud secrets
 5. Deploy!
 
 ## Contributing
@@ -132,7 +134,7 @@ This is a personal project, but feedback and suggestions are welcome! Feel free 
 
 ## Acknowledgments
 
-- Groq for providing the AI API
+- Google for providing the Gemini API
 - Streamlit for the amazing web framework
 - GitHub Classroom for the assignment structure
 - Claude Code for development assistance
